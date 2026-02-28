@@ -37,16 +37,16 @@ POPULAR_QUERIES = [
 ]
 
 BEGINNER_QUERIES = [
-    "good-first-issues:>1 stars:10..500 pushed:>{recent_date} archived:false language:Python",
-    "good-first-issues:>1 stars:10..500 pushed:>{recent_date} archived:false language:JavaScript",
-    "good-first-issues:>1 stars:10..500 pushed:>{recent_date} archived:false language:TypeScript",
-    "good-first-issues:>1 stars:10..500 pushed:>{recent_date} archived:false language:Java",
-    "good-first-issues:>1 stars:10..500 pushed:>{recent_date} archived:false language:Go",
-    "good-first-issues:>1 stars:10..500 pushed:>{recent_date} archived:false language:Rust",
-    "good-first-issues:>1 stars:10..500 pushed:>{recent_date} archived:false language:C++",
-    "good-first-issues:>1 stars:10..500 pushed:>{recent_date} archived:false language:Ruby",
-    "good-first-issues:>1 stars:10..500 pushed:>{recent_date} archived:false language:PHP",
-    "good-first-issues:>1 stars:10..500 pushed:>{recent_date} archived:false language:C#",
+    "good-first-issues:>1 stars:100..500 pushed:>{recent_date} archived:false language:Python",
+    "good-first-issues:>1 stars:100..500 pushed:>{recent_date} archived:false language:JavaScript",
+    "good-first-issues:>1 stars:100..500 pushed:>{recent_date} archived:false language:TypeScript",
+    "good-first-issues:>1 stars:100..500 pushed:>{recent_date} archived:false language:Java",
+    "good-first-issues:>1 stars:100..500 pushed:>{recent_date} archived:false language:Go",
+    "good-first-issues:>1 stars:100..500 pushed:>{recent_date} archived:false language:Rust",
+    "good-first-issues:>1 stars:100..500 pushed:>{recent_date} archived:false language:C++",
+    "good-first-issues:>1 stars:100..500 pushed:>{recent_date} archived:false language:Ruby",
+    "good-first-issues:>1 stars:100..500 pushed:>{recent_date} archived:false language:PHP",
+    "good-first-issues:>1 stars:100..500 pushed:>{recent_date} archived:false language:C#",
 ]
 
 DISCOVERY_QUERIES = POPULAR_QUERIES + BEGINNER_QUERIES

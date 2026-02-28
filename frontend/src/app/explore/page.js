@@ -14,7 +14,6 @@ const SORT_OPTIONS = [
 
 const STAR_RANGES = [
     { value: "all", label: "All Sizes", min: undefined, max: undefined },
-    { value: "tiny", label: "Tiny (< 100 ★)", min: undefined, max: 100 },
     { value: "small", label: "Small (< 500 ★)", min: undefined, max: 500 },
     { value: "medium", label: "Medium (500 – 5K ★)", min: 500, max: 5000 },
     { value: "large", label: "Large (5K – 50K ★)", min: 5000, max: 50000 },
