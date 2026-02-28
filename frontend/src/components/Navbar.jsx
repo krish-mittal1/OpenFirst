@@ -17,14 +17,20 @@ export default function Navbar() {
             <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-2.5 group">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-violet-500 to-indigo-600 shadow-lg shadow-violet-500/25 group-hover:shadow-violet-500/40 transition-shadow">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-black border border-white/10 shadow-lg transition-shadow">
                         <svg
-                            className="h-4.5 w-4.5 text-white"
+                            className="h-4 w-4"
                             fill="none"
                             viewBox="0 0 24 24"
                             strokeWidth={2}
-                            stroke="currentColor"
+                            stroke="url(#lightning-gradient)"
                         >
+                            <defs>
+                                <linearGradient id="lightning-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stopColor="#c084fc" />
+                                    <stop offset="100%" stopColor="#ffffff" />
+                                </linearGradient>
+                            </defs>
                             <path
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
