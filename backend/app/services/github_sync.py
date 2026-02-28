@@ -370,11 +370,23 @@ async def run_full_sync(max_repos: int = 200):
     candidates = await discover_repositories(max_pages_per_query=2)
     logger.info("Discovered %d candidate repos", len(candidates))
 
-    candidates.sort(key=lambda r: r.get("stargazers_count", 0), reverse=True)
-    candidates = candidates[:max_repos]
+    popular = [r for r in candidates if r.get("stargazers_count", 0) > 500]
+    small = [r for r in candidates if r.get("stargazers_count", 0) <= 500]
+
+    popular.sort(key=lambda r: r.get("stargazers_count", 0), reverse=True)
+    small.sort(key=lambda r: r.get("stargazers_count", 0), reverse=True)
+
+    popular_limit = int(max_repos * 0.6)
+    small_limit = max_repos - popular_limit
+
+    selected = popular[:popular_limit] + small[:small_limit]
+    logger.info(
+        "Selected %d repos: %d popular + %d beginner-friendly",
+        len(selected), min(len(popular), popular_limit), min(len(small), small_limit),
+    )
 
     success = 0
-    for repo_data in candidates:
+    for repo_data in selected:
         async with async_session_factory() as session:
             result = await sync_single_repo(session, repo_data)
             if result:
