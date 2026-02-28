@@ -156,23 +156,6 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
-
-      {/* ── Footer ────────────────────────────────────── */}
-      <footer className="border-t border-white/[0.04] py-8 text-center text-xs text-gray-600">
-        <p>
-          Built with ❤️ for the open source community.
-          Data sourced from the{" "}
-          <a
-            href="https://docs.github.com/en/rest"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white transition-colors"
-          >
-            GitHub API
-          </a>
-          .
-        </p>
-      </footer>
     </div>
   );
 }

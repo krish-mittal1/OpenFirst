@@ -1,5 +1,6 @@
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export const metadata = {
   title: "OpenFirst — Find Beginner-Friendly Open Source Projects",
@@ -23,9 +24,10 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased">
+      <body className="antialiased flex flex-col min-h-screen">
         <Navbar />
-        <main className="pt-16 min-h-screen">{children}</main>
+        <main className="pt-16 flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );

@@ -12,6 +12,15 @@ const SORT_OPTIONS = [
     { value: "last_commit_at", label: "Recently Updated" },
 ];
 
+const STAR_RANGES = [
+    { value: "all", label: "All Sizes", min: undefined, max: undefined },
+    { value: "tiny", label: "Tiny (< 100 ★)", min: undefined, max: 100 },
+    { value: "small", label: "Small (< 500 ★)", min: undefined, max: 500 },
+    { value: "medium", label: "Medium (500 – 5K ★)", min: 500, max: 5000 },
+    { value: "large", label: "Large (5K – 50K ★)", min: 5000, max: 50000 },
+    { value: "massive", label: "Massive (50K+ ★)", min: 50000, max: undefined },
+];
+
 export default function ExplorePage() {
     const [repos, setRepos] = useState([]);
     const [pagination, setPagination] = useState(null);
@@ -26,7 +35,10 @@ export default function ExplorePage() {
     const [sortBy, setSortBy] = useState("combined_score");
     const [hasIssues, setHasIssues] = useState(true);
     const [activelyMerging, setActivelyMerging] = useState(false);
+    const [starRange, setStarRange] = useState("all");
     const [page, setPage] = useState(1);
+
+    const selectedRange = STAR_RANGES.find((r) => r.value === starRange) || STAR_RANGES[0];
 
     const fetchRepos = useCallback(async () => {
         setLoading(true);
@@ -39,6 +51,8 @@ export default function ExplorePage() {
                 sort_by: sortBy,
                 has_issues: hasIssues || undefined,
                 actively_merging: activelyMerging || undefined,
+                min_stars: selectedRange.min,
+                max_stars: selectedRange.max,
                 page,
                 per_page: 12,
             });
@@ -68,7 +82,7 @@ export default function ExplorePage() {
         } finally {
             setLoading(false);
         }
-    }, [search, language, sortBy, hasIssues, activelyMerging, page]);
+    }, [search, language, sortBy, hasIssues, activelyMerging, starRange, page]);
 
     useEffect(() => {
         fetchRepos();
@@ -82,7 +96,7 @@ export default function ExplorePage() {
 
     useEffect(() => {
         setPage(1);
-    }, [search, language, sortBy, hasIssues, activelyMerging]);
+    }, [search, language, sortBy, hasIssues, activelyMerging, starRange]);
 
     return (
         <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
@@ -145,6 +159,19 @@ export default function ExplorePage() {
                     {SORT_OPTIONS.map((opt) => (
                         <option key={opt.value} value={opt.value}>
                             {opt.label}
+                        </option>
+                    ))}
+                </select>
+
+                {/* Project Size */}
+                <select
+                    value={starRange}
+                    onChange={(e) => setStarRange(e.target.value)}
+                    className="rounded-xl border border-white/[0.08] bg-[#0d0d14] py-2.5 px-3 text-sm text-gray-300 outline-none focus:border-violet-500/40 cursor-pointer"
+                >
+                    {STAR_RANGES.map((r) => (
+                        <option key={r.value} value={r.value}>
+                            {r.label}
                         </option>
                     ))}
                 </select>
