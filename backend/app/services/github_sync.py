@@ -23,18 +23,33 @@ from app.services.scoring_engine import (
 
 logger = logging.getLogger(__name__)
 
-DISCOVERY_QUERIES = [
-    "good-first-issues:>3 stars:>100 pushed:>{recent_date} archived:false language:Python",
-    "good-first-issues:>3 stars:>100 pushed:>{recent_date} archived:false language:JavaScript",
-    "good-first-issues:>3 stars:>100 pushed:>{recent_date} archived:false language:TypeScript",
-    "good-first-issues:>3 stars:>100 pushed:>{recent_date} archived:false language:Java",
-    "good-first-issues:>3 stars:>100 pushed:>{recent_date} archived:false language:Go",
-    "good-first-issues:>3 stars:>100 pushed:>{recent_date} archived:false language:Rust",
-    "good-first-issues:>3 stars:>100 pushed:>{recent_date} archived:false language:C++",
-    "good-first-issues:>3 stars:>100 pushed:>{recent_date} archived:false language:Ruby",
-    "good-first-issues:>3 stars:>100 pushed:>{recent_date} archived:false language:PHP",
-    "good-first-issues:>3 stars:>100 pushed:>{recent_date} archived:false language:C#",
+POPULAR_QUERIES = [
+    "good-first-issues:>3 stars:>500 pushed:>{recent_date} archived:false language:Python",
+    "good-first-issues:>3 stars:>500 pushed:>{recent_date} archived:false language:JavaScript",
+    "good-first-issues:>3 stars:>500 pushed:>{recent_date} archived:false language:TypeScript",
+    "good-first-issues:>3 stars:>500 pushed:>{recent_date} archived:false language:Java",
+    "good-first-issues:>3 stars:>500 pushed:>{recent_date} archived:false language:Go",
+    "good-first-issues:>3 stars:>500 pushed:>{recent_date} archived:false language:Rust",
+    "good-first-issues:>3 stars:>500 pushed:>{recent_date} archived:false language:C++",
+    "good-first-issues:>3 stars:>500 pushed:>{recent_date} archived:false language:Ruby",
+    "good-first-issues:>3 stars:>500 pushed:>{recent_date} archived:false language:PHP",
+    "good-first-issues:>3 stars:>500 pushed:>{recent_date} archived:false language:C#",
 ]
+
+BEGINNER_QUERIES = [
+    "good-first-issues:>1 stars:10..500 pushed:>{recent_date} archived:false language:Python",
+    "good-first-issues:>1 stars:10..500 pushed:>{recent_date} archived:false language:JavaScript",
+    "good-first-issues:>1 stars:10..500 pushed:>{recent_date} archived:false language:TypeScript",
+    "good-first-issues:>1 stars:10..500 pushed:>{recent_date} archived:false language:Java",
+    "good-first-issues:>1 stars:10..500 pushed:>{recent_date} archived:false language:Go",
+    "good-first-issues:>1 stars:10..500 pushed:>{recent_date} archived:false language:Rust",
+    "good-first-issues:>1 stars:10..500 pushed:>{recent_date} archived:false language:C++",
+    "good-first-issues:>1 stars:10..500 pushed:>{recent_date} archived:false language:Ruby",
+    "good-first-issues:>1 stars:10..500 pushed:>{recent_date} archived:false language:PHP",
+    "good-first-issues:>1 stars:10..500 pushed:>{recent_date} archived:false language:C#",
+]
+
+DISCOVERY_QUERIES = POPULAR_QUERIES + BEGINNER_QUERIES
 
 
 def _parse_datetime(dt_str: str | None) -> datetime | None:
