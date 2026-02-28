@@ -13,7 +13,7 @@ async def main():
     print("This will fetch repos from GitHub and populate your database.")
     print("This may take a few minutes depending on rate limits.\n")
 
-    await run_full_sync(max_repos=50)
+    await run_full_sync(max_repos=500)
 
     print("\nSync complete! Refresh localhost:3000/explore to see data.")
 
